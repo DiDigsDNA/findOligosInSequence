@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 '''Searches sequences in fasta format for exact matches to oligonucleotides (i.e. primers, probes) or their
 reverse complements. Accepts degenerate bases in oligonucleotides. Outputs sequences requiring analytial
 follow-up (i.e. in DNA analysis software) to a fasta file. Outputs genbank accession numbers, along with
