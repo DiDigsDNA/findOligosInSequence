@@ -1,0 +1,30 @@
+<tool id="findOligosInSequence" name="Find Primers and Probe in Sequence" version="0.0.1">
+  <requirements>
+    <requirement type="package" version="1.70">biopython</requirement>
+  </requirements>
+  <command detect_errors="exit_code"><![CDATA[
+    findOligosInSequence.py
+    '$input_fasta_sequences'
+    '$input_fasta_oligos'
+    '$output_file'
+  ]]></command>
+  <inputs>
+    <param name="input_fasta_sequences" format="fasta" type="data" />
+    <param name="input_fasta_oligos" format="fasta" type="data" />
+  </inputs>
+  <outputs>
+      <data format="tabular" name="output_file"/>
+  </outputs>
+  <tests>
+    <test>
+      <param name="input_fasta_sequences" value="14_H3_aa_seqs_aligned.fasta"/>
+      <param name="input_fasta_oligos" value="FluA_oligos.fasta"/>
+      <output name="output_file" file="output.txt"/>
+    </test>
+  </tests>
+  <help><![CDATA[
+    Upload a fasta files containing sequences and another fasta file of primers and probes.
+  ]]></help>
+  <citations>
+  </citations>
+</tool>

@@ -1,0 +1,32 @@
+---------------------------------------------------------------------------
+RESULTS OF SEARCH FOR EXACT MATCHES TO OLIGONUCLEOTIDES IN QUERY SEQUENCES:
+---------------------------------------------------------------------------
+
+Sequences Searched: test-data/9_fluA_Mgene_seqs.fasta 
+
+Oligonucleotides Searched for: test-data/FluA_oligos.fasta 
+
+Analysis as of: Wed May 23 16:20:51 2018
+
+The following Genbank accession numbers require further analysis in Geneious:
+(Note: only sequences with primer/probe mismatches are listed.)
+
+---------------------------------------------------------------------------
+
+MF039638:
+'Flu_A_Univ_R' NOT found
+'Flu_A_P' NOT found
+
+KX867852:
+'Flu_A_Univ_R' NOT found
+
+KX570999:
+'Flu_A_Univ-F' NOT found
+
+KP638049:
+'Flu_A_Univ-F' NOT found
+------------------------------------------------------
+
+END OF RESULTS
+Output file: results/output.txt
+Fasta sequences for analysis: results/output.fasta
