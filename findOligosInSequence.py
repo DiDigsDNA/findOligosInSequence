@@ -48,7 +48,6 @@ def printSearchResults(oligoFoundDict, record):
     print ("%s:" % (record.id))
     #print search results to information file
     gb_accessions.write("\n\n%s:" % (record.id))
-    #gb_accessions.write("\n%s:" % (record.id))
     for oligo_name in oligoFoundDict:
         if oligoFoundDict[oligo_name] == False:
             #print SeqRecord id of oligo
@@ -59,7 +58,6 @@ def printSearchResults(oligoFoundDict, record):
 def searchSequenceForOligoSet(record, oligoList, rc_oligoList):
     '''Searches a SeqRecord for each oligo in the oligo list (and for its reverse complement). '''
     oligoFoundDict = {} #dictionaries to store found/not found state of oligos and revcomp's
-    #rc_oligoDict = {}
     oligoSetResults = [] #empty list to hold search result tuples
     for i, oligo in enumerate(oligoList): #oligos in oligoList and rc_oligoList already in same order
         oligoFound = parseSeqRecordForOligo(record, oligo) #search for oligo in sequence
