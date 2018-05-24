@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-'''Searches sequences in fasta format for exact matches to oligonucleotides (i.e. primers, probes) or their
+'''Searches nucleotide fasta sequences for exact matches to oligonucleotides (i.e. primers, probes) or their
 reverse complements. Accepts degenerate bases in oligonucleotides. Outputs sequences requiring analytial
 follow-up (i.e. in DNA analysis software) to a fasta file. Outputs genbank accession numbers, along with
 details of primers not found to an information .txt file.'''
@@ -44,20 +44,19 @@ def printSearchResults(oligoFoundDict, record):
     '''Check oligoFoundDict for oligos NOT found in record and, in case of unfound oligos,
     print the SeqRecord id to consol and information file, followed by names of unfound oligos.'''
     #print search results to console
-    print "______________________________________________________"
-    print "%s:" % (record.id)
+    print("______________________________________________________")
+    print ("%s:" % (record.id))
     #print search results to information file
-    #gb_accessions.write("\n______________________________________________________\n%s:" % (record.id))
     gb_accessions.write("\n\n%s:" % (record.id))
     #gb_accessions.write("\n%s:" % (record.id))
-    for oligo in oligoFoundDict:
-        if oligoFoundDict[oligo] == False:
+    for oligo_name in oligoFoundDict:
+        if oligoFoundDict[oligo_name] == False:
             #print SeqRecord id of oligo
-            gb_accessions.write("\n'%s' NOT found" % (oligo.id))
-            print oligo.id + " NOT found"
+            gb_accessions.write("\n'%s' NOT found" % (oligo_name))
+            print(oligo_name + " NOT found")
     return
 
-def searchSequenceForOligoSet(record):
+def searchSequenceForOligoSet(record, oligoList, rc_oligoList):
     '''Searches a SeqRecord for each oligo in the oligo list (and for its reverse complement). '''
     oligoFoundDict = {} #dictionaries to store found/not found state of oligos and revcomp's
     #rc_oligoDict = {}
@@ -65,13 +64,11 @@ def searchSequenceForOligoSet(record):
     for i, oligo in enumerate(oligoList): #oligos in oligoList and rc_oligoList already in same order
         oligoFound = parseSeqRecordForOligo(record, oligo) #search for oligo in sequence
         rc_oligoFound = parseSeqRecordForOligo(record, rc_oligoList[i]) #search for oligo rev comp
-        oligoResults = (oligoFound,rc_oligoFound) #store both results in a tuple
-        oligoSetResults.append(oligoResults) #DO I REALLY NEED TO STORE THIS?
-    #I ONLY WNAT TO PRINT THE GB ACCESS TO TEXT FILE IF THERE IS AN UNFOUND PRIMER
+    	#print GB accession # to file only if there is an unfound primer/probe
         if (oligoFound == False) and (rc_oligoFound == False):
-            oligoFoundDict[oligo]=False
+        	oligoFoundDict[oligo.id]=False
         else:
-            oligoFoundDict[oligo]=True
+            oligoFoundDict[oligo.id]=True
     if False in oligoFoundDict.values(): 
         printSearchResults(oligoFoundDict,record) #print SeqRecord id (GB acc #) and unfound oligos to file
         SeqIO.write(record, outputFasta, "fasta") #output SeqRecord to fasta file
@@ -95,10 +92,10 @@ with open(oligosToFind,'r') as oligoFile:
 with open(fastaToParse,'r') as inFile:
     #read nucleotide sequences from fasta file into SeqRecords, uppercases and adds to a list
     seqList = [rec.upper() for rec in list(SeqIO.parse(inFile, "fasta", alphabet=IUPAC.ambiguous_dna))]
-    print "\nSearching for oligonucleotides in %i sequences..." % len(seqList)
+    print("\nSearching for oligonucleotides in %i sequences..." % len(seqList))
     for record in seqList: #parse SeqRecord for exact match to each oligo and reverse complement
-        searchSequenceForOligoSet(record)
-print "\nEND OF RESULTS\n"
+        searchSequenceForOligoSet(record, oligoList, rc_oligoList)
+print("\nEND OF RESULTS\n")
 gb_accessions.write("\n------------------------------------------------------")
 gb_accessions.write("\n\nEND OF RESULTS")
 gb_accessions.write("\nOutput file: " + gb_accessionsHandle)

@@ -6,7 +6,7 @@ Sequences Searched: test-data/9_fluA_Mgene_seqs.fasta
 
 Oligonucleotides Searched for: test-data/FluA_oligos.fasta 
 
-Analysis as of: Wed May 23 16:20:51 2018
+Analysis as of: Wed May 23 16:40:39 2018
 
 The following Genbank accession numbers require further analysis in Geneious:
 (Note: only sequences with primer/probe mismatches are listed.)
