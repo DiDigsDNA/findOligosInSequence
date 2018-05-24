@@ -17,7 +17,7 @@
   </outputs>
   <tests>
     <test>
-      <param name="input_fasta_sequences" value="14_H3_aa_seqs_aligned.fasta"/>
+      <param name="input_fasta_sequences" value="9_fluA_Mgene_seqs.fasta"/>
       <param name="input_fasta_oligos" value="FluA_oligos.fasta"/>
       <output name="output_file" file="output.txt"/>
     </test>
