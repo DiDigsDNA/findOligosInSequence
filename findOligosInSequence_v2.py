@@ -58,11 +58,12 @@ def printSearchResults(oligoFoundDict, record):
     for oligo_name in oligoFoundDict:
         if oligoFoundDict[oligo_name] == False:
             #print ',' followed by oligo name
-            gb_accessions.write(",%s" % (oligo_name))
+            #gb_accessions.write(",%s" % (oligo_name))
+            gb_accessions.write(",NOT_FOUND")
             #print info to console
             console.write(oligo_name + " NOT found\n")
         else: #insert a comma into the csv file
-        	gb_accessions.write(",")
+        	gb_accessions.write(",found")
     return
 
 def searchSequenceForOligoSet(record, oligoList, rc_oligoList):
