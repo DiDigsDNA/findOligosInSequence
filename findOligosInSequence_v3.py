@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 
 '''Searches nucleotide fasta sequences for exact matches to oligonucleotides (i.e. primers, probes) or their
-reverse complements. Accepts degenerate bases in oligonucleotides. Outputs sequences requiring analytical
-follow-up (i.e. in DNA analysis software) to a fasta file. Outputs genbank accession numbers, along with
-details of primers not found to an information .txt file.'''
+reverse complements. Accepts degenerate bases in oligonucleotides. Outputs: (i)sequences requiring analytical
+follow-up (i.e. in DNA analysis software) to a fasta file,(ii) sequence id's (usually genbank accession numbers)
+and  details of which oligos were not found to an information .txt file, and (iii) sequence id's and found/
+found information on oligos to a csv file which can be viewed and sorted in spreadsheet software'''
 
 '''Author: Diane Eisler, Molecular Microbiology & Genomics, BCCDC Public Health Laboratory,Sept 2017'''
 import sys,string,os, time, Bio
